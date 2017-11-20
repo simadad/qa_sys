@@ -5,6 +5,7 @@ from django.db import models
 
 class QAItem(models.Model):
     title = models.CharField(max_length=255, verbose_name='题目')
+    desc = models.TextField(verbose_name='描述', default='描述')
     answer = models.TextField(verbose_name='答案')
 
     def __str__(self):

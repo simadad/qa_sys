@@ -87,13 +87,14 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'crossin_qa',
-        'USER': 'root',
-        'PASSWORD': 'xgh19920520',
+        'USER': 'crossin_qa',
+        'PASSWORD': 'crossin_qa',
         'HOST': '',
         'PORT': '',
     }
 }
 
+# 搜索引擎配置
 HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'haystack.backends.whoosh_cn_backend.WhooshEngine',
