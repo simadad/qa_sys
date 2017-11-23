@@ -11,6 +11,9 @@ from .models import *
 
 @method_decorator(login_required, 'get')
 class MyClassView(View):
+    """
+    class base views test
+    """
     def get(self, request):
         data = request.GET.get('data')
         return HttpResponse(data)
@@ -18,6 +21,9 @@ class MyClassView(View):
 
 @method_decorator(csrf_exempt, 'dispatch')
 class ItemSave(View):
+    """
+    项目条目问题接口
+    """
     def post(self, request):
         title = request.POST.get('title')
         desc = request.POST.get('desc')
@@ -35,6 +41,9 @@ class ItemSave(View):
 
 
 class KeyToItem(View):
+    """
+    保存 "关键字-条目" 对应规则接口
+    """
     def get(self, request):
         qid = request.GET.get('qid')
         key = request.GET.get('key')

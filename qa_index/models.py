@@ -25,4 +25,4 @@ class KeyToQA(models.Model):
     times = models.IntegerField(verbose_name='查询次数', default=0)
 
     def __str__(self):
-        return self.times + '-' + self.keyword.keyword + '-' + self.qa.title
+        return self.times.__str__() + '-' + self.keyword.keyword + '-' + self.qa.title

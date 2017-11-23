@@ -12,6 +12,9 @@ error = []
 
 
 def _get_answer(url):
+    """
+    储存答案及描述
+    """
     r = requests.get(url, cookies=cookies)
     soup = BeautifulSoup(r.text, 'html.parser')
     desc = soup.find(class_='panel-body').prettify()
@@ -26,6 +29,9 @@ def _get_answer(url):
 
 
 def _save_item(title, desc, answer):
+    """
+    保存条目
+    """
     url = 'http://127.0.0.1:8000/qa/save'
     data = {
         'title': title,
@@ -39,6 +45,9 @@ def _save_item(title, desc, answer):
 
 
 def _save_keyword(key, qid):
+    """
+    保存关键字
+    """
     url = 'http://127.0.0.1:8000/qa/k2qa'
     data = {
         'key': key,
@@ -50,6 +59,9 @@ def _save_keyword(key, qid):
 
 
 def thr_item(item):
+    """
+    信息储存线程函数
+    """
     h4 = item.find('h4')
     title = h4.string
     item_url = h4.parent['href']
@@ -67,6 +79,9 @@ def thr_item(item):
 
 
 def faq_spider():
+    """
+    爬取学习站问答记录并调用 qa_sys 接口储存信息
+    """
     r = requests.get(root_url + '/faq/')
     soup = BeautifulSoup(r.text, 'html.parser')
     items = soup.find_all(attrs={'class': 'list-group-item'})
